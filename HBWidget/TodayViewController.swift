@@ -18,6 +18,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             self.tableView.reloadData()
         }
     }
+    
+    //private let rowHeight:CGFloat = 100.0
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +29,19 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         self.tableView.dataSource = self
         
         self.setupDataSrc()
-        
         self.updatePreferredContentSize()
-        
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+        self.updatePreferredContentSize()
+    }
     
     
     func setupDataSrc() {
         var tempChannels = [HBChannel]()
-        for eachIndex in 0...59 {
+        for eachIndex in 0...4 {
             let hbc = HBChannel(channelIdentifier: "identifier \(eachIndex)", channelDisplayName: "Channel Display name \(eachIndex)", channelDescription: "\(eachIndex) : Channel Description. Plastic has become a vital part of our lives of convenience.", enableChannel: true, enableNotification: true)
             tempChannels.append(hbc)
         }
@@ -56,13 +60,19 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
+        self.tableView.reloadData()
+        self.updatePreferredContentSize()
         completionHandler(NCUpdateResult.newData)
     }
     
     
+    
+    
     func updatePreferredContentSize() {
-        let newSize = CGSize(width: CGFloat(0), height: CGFloat(self.tableView.numberOfRows(inSection: 0)) * CGFloat(self.tableView.rowHeight) + self.tableView.sectionFooterHeight)
-        preferredContentSize = newSize
+        let rHeight:CGFloat = 80.0
+        var newSize = self.preferredContentSize
+        newSize.height = CGFloat(self.tableView.numberOfRows(inSection: 0)) * rHeight //CGFloat(self.tableView.rowHeight)
+        self.preferredContentSize = newSize
     }
     
     //MARK: - UITableViewDelegate & UIDataSrcDelegate
@@ -73,7 +83,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSrc.count
+        return 3 //self.dataSrc.count
     }
     
     
