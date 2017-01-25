@@ -22,6 +22,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     //private let rowHeight:CGFloat = 100.0
         
     override func viewDidLoad() {
+        print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         
@@ -29,19 +30,24 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         self.tableView.dataSource = self
         
         self.setupDataSrc()
-        self.updatePreferredContentSize()
+        
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
+        print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
         super.viewWillAppear(animated)
         self.tableView.reloadData()
         self.updatePreferredContentSize()
     }
     
+    static let maxSize = 10
     
     func setupDataSrc() {
+        print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
         var tempChannels = [HBChannel]()
-        for eachIndex in 0...4 {
+        for eachIndex in 0...TodayViewController.maxSize {
             let hbc = HBChannel(channelIdentifier: "identifier \(eachIndex)", channelDisplayName: "Channel Display name \(eachIndex)", channelDescription: "\(eachIndex) : Channel Description. Plastic has become a vital part of our lives of convenience.", enableChannel: true, enableNotification: true)
             tempChannels.append(hbc)
         }
@@ -49,11 +55,13 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     override func didReceiveMemoryWarning() {
+        print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+        print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
         // Perform any setup necessary in order to update the view.
         
         // If an error is encountered, use NCUpdateResult.Failed
@@ -69,9 +77,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     
     func updatePreferredContentSize() {
-        let rHeight:CGFloat = 80.0
+        print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
+        let rHeight:CGFloat = 20.0
         var newSize = self.preferredContentSize
-        newSize.height = CGFloat(self.tableView.numberOfRows(inSection: 0)) * rHeight //CGFloat(self.tableView.rowHeight)
+        //newSize.height = CGFloat(self.tableView.numberOfRows(inSection: 0)) * rHeight //CGFloat(self.tableView.rowHeight)
+        newSize.height = CGFloat(self.tableView.numberOfRows(inSection: 0)) * rHeight
         self.preferredContentSize = newSize
     }
     
@@ -83,7 +93,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3 //self.dataSrc.count
+        return TodayViewController.maxSize //self.dataSrc.count
     }
     
     
@@ -91,7 +101,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_Identifier", for: indexPath as IndexPath)
         let hbc = self.dataSrc[indexPath.row]
             
-        cell.selectionStyle =  UITableViewCellSelectionStyle.none //UITableViewCellSelectionStyle.None
+        cell.selectionStyle =  UITableViewCellSelectionStyle.default //UITableViewCellSelectionStyle.None
         cell.layoutMargins =  UIEdgeInsets.zero
         cell.textLabel?.text = hbc.channelDisplayName
         cell.textLabel?.textColor = UIColor.lightText
