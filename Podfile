@@ -2,9 +2,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-target 'HBWidget' do
-    
-
+# There are no targets called "Shows" in any Xcode projects
+abstract_target 'Common' do
     
     #pod 'Alamofire', '~> 3.0'
     #For xcode 7.x, switf 2.3 & ios 8 or above
@@ -16,6 +15,17 @@ target 'HBWidget' do
     pod 'SwiftyJSON'
     
     pod 'SDWebImage'
+    
+    
+     # Has its own copy of Alamofire, SwiftyJSON, SDWebImage, + extra pod
+    target 'EHWidget' do
+        
+    end
+    
+    # Has its own copy of Alamofire, SwiftyJSON, SDWebImage, + extra pod
+    target 'HBWidget' do
 
+    end
     
 end
+

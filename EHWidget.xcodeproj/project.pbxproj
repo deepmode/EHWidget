@@ -17,14 +17,23 @@
 		6B8546C11DFA8FEE0017A948 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8546BF1DFA8FEE0017A948 /* LaunchScreen.storyboard */; };
 		6B8546CF1DFA927E0017A948 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B8546CE1DFA927E0017A948 /* NotificationCenter.framework */; };
 		6B8546D21DFA927E0017A948 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8546D11DFA927E0017A948 /* TodayViewController.swift */; };
-		6B8546D51DFA927E0017A948 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8546D31DFA927E0017A948 /* MainInterface.storyboard */; };
 		6B8546D91DFA927E0017A948 /* HBWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6B8546CC1DFA927D0017A948 /* HBWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6B8546E11DFA95680017A948 /* HBChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8546E01DFA95680017A948 /* HBChannel.swift */; };
 		6BDB80D91E3AE22400CE59AF /* HBNewsWidgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDB80D71E3AE22300CE59AF /* HBNewsWidgetCell.swift */; };
 		6BDB80DA1E3AE22400CE59AF /* HBNewsWidgetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BDB80D81E3AE22300CE59AF /* HBNewsWidgetCell.xib */; };
 		6BDB80DC1E3AF11B00CE59AF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BDB80DB1E3AF11B00CE59AF /* Media.xcassets */; };
 		6BDB80DE1E3B216800CE59AF /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 6BDB80DD1E3B216800CE59AF /* Podfile */; };
+		6BFC52751E4057AE00B3885A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8546D31DFA927E0017A948 /* MainInterface.storyboard */; };
+		6BFDD0491E40590700CDB0C1 /* AF+Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFDD0431E40590700CDB0C1 /* AF+Date+Extension.swift */; };
+		6BFDD04A1E40590700CDB0C1 /* HBApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFDD0441E40590700CDB0C1 /* HBApi.swift */; };
+		6BFDD04B1E40590700CDB0C1 /* HBChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFDD0451E40590700CDB0C1 /* HBChannel.swift */; };
+		6BFDD04C1E40590700CDB0C1 /* HBNewsWidgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFDD0461E40590700CDB0C1 /* HBNewsWidgetCell.swift */; };
+		6BFDD04D1E40590700CDB0C1 /* HBNewsWidgetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BFDD0471E40590700CDB0C1 /* HBNewsWidgetCell.xib */; };
+		6BFDD04E1E40590700CDB0C1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFDD0481E40590700CDB0C1 /* Post.swift */; };
+		6BFDD0501E406C2300CDB0C1 /* timeago.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFDD04F1E406C2300CDB0C1 /* timeago.swift */; };
 		CB86073F50AFD949E93DB7ED /* Pods_HBWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4907AF71E5C7B300E0DC2FB3 /* Pods_HBWidget.framework */; };
+		E417AD0A11B3FD31EA724DB6 /* Pods_Common_HBWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB6049726A7ECF7FF5E547C /* Pods_Common_HBWidget.framework */; };
+		FFC512B43100127BF04022D9 /* Pods_Common_EHWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDFC5FBBA0DCBC07FCE4483 /* Pods_Common_EHWidget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		2BADEC4EECCAD249AF0D02F9 /* Pods-HBWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-HBWidget/Pods-HBWidget.release.xcconfig"; sourceTree = "<group>"; };
+		4099516B83167904EA97E2A8 /* Pods-Common-EHWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common-EHWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Common-EHWidget/Pods-Common-EHWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		4907AF71E5C7B300E0DC2FB3 /* Pods_HBWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HBWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B80BA3C1E3B25EA005C5E4A /* HBApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBApi.swift; sourceTree = "<group>"; };
 		6B80BA3E1E3B284F005C5E4A /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -74,7 +84,19 @@
 		6BDB80D81E3AE22300CE59AF /* HBNewsWidgetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HBNewsWidgetCell.xib; sourceTree = "<group>"; };
 		6BDB80DB1E3AF11B00CE59AF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		6BDB80DD1E3B216800CE59AF /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6BFDD0431E40590700CDB0C1 /* AF+Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AF+Date+Extension.swift"; path = "files/AF+Date+Extension.swift"; sourceTree = "<group>"; };
+		6BFDD0441E40590700CDB0C1 /* HBApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HBApi.swift; path = files/HBApi.swift; sourceTree = "<group>"; };
+		6BFDD0451E40590700CDB0C1 /* HBChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HBChannel.swift; path = files/HBChannel.swift; sourceTree = "<group>"; };
+		6BFDD0461E40590700CDB0C1 /* HBNewsWidgetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HBNewsWidgetCell.swift; path = files/HBNewsWidgetCell.swift; sourceTree = "<group>"; };
+		6BFDD0471E40590700CDB0C1 /* HBNewsWidgetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HBNewsWidgetCell.xib; path = files/HBNewsWidgetCell.xib; sourceTree = "<group>"; };
+		6BFDD0481E40590700CDB0C1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = files/Post.swift; sourceTree = "<group>"; };
+		6BFDD04F1E406C2300CDB0C1 /* timeago.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeago.swift; sourceTree = "<group>"; };
+		9CDFC5FBBA0DCBC07FCE4483 /* Pods_Common_EHWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Common_EHWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAD8079F493F7380DD115AF4 /* Pods-Common-EHWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common-EHWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Common-EHWidget/Pods-Common-EHWidget.release.xcconfig"; sourceTree = "<group>"; };
+		DAB6049726A7ECF7FF5E547C /* Pods_Common_HBWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Common_HBWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E69F99CB79DD94EA346A7A4A /* Pods-HBWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HBWidget/Pods-HBWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		F15F883ACF924CE741DC57CD /* Pods-Common-HBWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common-HBWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Common-HBWidget/Pods-Common-HBWidget.release.xcconfig"; sourceTree = "<group>"; };
+		FB04743747D3B187ACE9F1BA /* Pods-Common-HBWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common-HBWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Common-HBWidget/Pods-Common-HBWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFC512B43100127BF04022D9 /* Pods_Common_EHWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +114,7 @@
 			files = (
 				6B8546CF1DFA927E0017A948 /* NotificationCenter.framework in Frameworks */,
 				CB86073F50AFD949E93DB7ED /* Pods_HBWidget.framework in Frameworks */,
+				E417AD0A11B3FD31EA724DB6 /* Pods_Common_HBWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +145,7 @@
 		6B8546B51DFA8FEE0017A948 /* EHWidget */ = {
 			isa = PBXGroup;
 			children = (
+				6BFC52731E40567400B3885A /* New Group */,
 				6B8546B61DFA8FEE0017A948 /* AppDelegate.swift */,
 				6B8546B81DFA8FEE0017A948 /* ViewController.swift */,
 				6B8546BA1DFA8FEE0017A948 /* Main.storyboard */,
@@ -136,6 +161,8 @@
 			children = (
 				6B8546CE1DFA927E0017A948 /* NotificationCenter.framework */,
 				4907AF71E5C7B300E0DC2FB3 /* Pods_HBWidget.framework */,
+				9CDFC5FBBA0DCBC07FCE4483 /* Pods_Common_EHWidget.framework */,
+				DAB6049726A7ECF7FF5E547C /* Pods_Common_HBWidget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,16 +172,30 @@
 			children = (
 				6B8546D11DFA927E0017A948 /* TodayViewController.swift */,
 				6B8546D31DFA927E0017A948 /* MainInterface.storyboard */,
-				6B8546D61DFA927E0017A948 /* Info.plist */,
 				6B8546E01DFA95680017A948 /* HBChannel.swift */,
 				6BDB80D71E3AE22300CE59AF /* HBNewsWidgetCell.swift */,
 				6BDB80D81E3AE22300CE59AF /* HBNewsWidgetCell.xib */,
-				6BDB80DB1E3AF11B00CE59AF /* Media.xcassets */,
 				6B80BA3E1E3B284F005C5E4A /* Post.swift */,
 				6B80BA3C1E3B25EA005C5E4A /* HBApi.swift */,
 				6B80BA421E3B314D005C5E4A /* AF+Date+Extension.swift */,
+				6BFDD04F1E406C2300CDB0C1 /* timeago.swift */,
+				6B8546D61DFA927E0017A948 /* Info.plist */,
+				6BDB80DB1E3AF11B00CE59AF /* Media.xcassets */,
 			);
 			path = HBWidget;
+			sourceTree = "<group>";
+		};
+		6BFC52731E40567400B3885A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				6BFDD0431E40590700CDB0C1 /* AF+Date+Extension.swift */,
+				6BFDD0441E40590700CDB0C1 /* HBApi.swift */,
+				6BFDD0451E40590700CDB0C1 /* HBChannel.swift */,
+				6BFDD0461E40590700CDB0C1 /* HBNewsWidgetCell.swift */,
+				6BFDD0471E40590700CDB0C1 /* HBNewsWidgetCell.xib */,
+				6BFDD0481E40590700CDB0C1 /* Post.swift */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		C23D8FE377D0895A74CC63F3 /* Pods */ = {
@@ -162,6 +203,10 @@
 			children = (
 				E69F99CB79DD94EA346A7A4A /* Pods-HBWidget.debug.xcconfig */,
 				2BADEC4EECCAD249AF0D02F9 /* Pods-HBWidget.release.xcconfig */,
+				4099516B83167904EA97E2A8 /* Pods-Common-EHWidget.debug.xcconfig */,
+				BAD8079F493F7380DD115AF4 /* Pods-Common-EHWidget.release.xcconfig */,
+				FB04743747D3B187ACE9F1BA /* Pods-Common-HBWidget.debug.xcconfig */,
+				F15F883ACF924CE741DC57CD /* Pods-Common-HBWidget.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -173,10 +218,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B8546C51DFA8FEE0017A948 /* Build configuration list for PBXNativeTarget "EHWidget" */;
 			buildPhases = (
+				9C8B98EE60F4CBF4435A4B0B /* [CP] Check Pods Manifest.lock */,
 				6B8546AF1DFA8FEE0017A948 /* Sources */,
 				6B8546B01DFA8FEE0017A948 /* Frameworks */,
 				6B8546B11DFA8FEE0017A948 /* Resources */,
 				6B8546DD1DFA927E0017A948 /* Embed App Extensions */,
+				FAE79716F2CF217BADFEE9BE /* [CP] Embed Pods Frameworks */,
+				B7AD3358042D6E7CC43E3A43 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,6 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BFDD04D1E40590700CDB0C1 /* HBNewsWidgetCell.xib in Resources */,
 				6B8546C11DFA8FEE0017A948 /* LaunchScreen.storyboard in Resources */,
 				6B8546BE1DFA8FEE0017A948 /* Assets.xcassets in Resources */,
 				6B8546BC1DFA8FEE0017A948 /* Main.storyboard in Resources */,
@@ -265,9 +314,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BDB80DA1E3AE22400CE59AF /* HBNewsWidgetCell.xib in Resources */,
+				6BFC52751E4057AE00B3885A /* MainInterface.storyboard in Resources */,
 				6BDB80DC1E3AF11B00CE59AF /* Media.xcassets in Resources */,
 				6BDB80DE1E3B216800CE59AF /* Podfile in Resources */,
-				6B8546D51DFA927E0017A948 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +335,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HBWidget/Pods-HBWidget-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Common-HBWidget/Pods-Common-HBWidget-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C8B98EE60F4CBF4435A4B0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B7AD3358042D6E7CC43E3A43 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Common-EHWidget/Pods-Common-EHWidget-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BBC97B1A102E465E14780248 /* [CP] Copy Pods Resources */ = {
@@ -301,7 +380,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HBWidget/Pods-HBWidget-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Common-HBWidget/Pods-Common-HBWidget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAE79716F2CF217BADFEE9BE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Common-EHWidget/Pods-Common-EHWidget-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FFF543D4F59866BB30834103 /* [CP] Check Pods Manifest.lock */ = {
@@ -327,6 +421,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B8546B91DFA8FEE0017A948 /* ViewController.swift in Sources */,
+				6BFDD0491E40590700CDB0C1 /* AF+Date+Extension.swift in Sources */,
+				6BFDD04C1E40590700CDB0C1 /* HBNewsWidgetCell.swift in Sources */,
+				6BFDD04B1E40590700CDB0C1 /* HBChannel.swift in Sources */,
+				6BFDD04A1E40590700CDB0C1 /* HBApi.swift in Sources */,
+				6BFDD04E1E40590700CDB0C1 /* Post.swift in Sources */,
 				6B8546B71DFA8FEE0017A948 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +438,7 @@
 				6B80BA431E3B314D005C5E4A /* AF+Date+Extension.swift in Sources */,
 				6B8546E11DFA95680017A948 /* HBChannel.swift in Sources */,
 				6B80BA3D1E3B25EA005C5E4A /* HBApi.swift in Sources */,
+				6BFDD0501E406C2300CDB0C1 /* timeago.swift in Sources */,
 				6BDB80D91E3AE22400CE59AF /* HBNewsWidgetCell.swift in Sources */,
 				6B80BA3F1E3B284F005C5E4A /* Post.swift in Sources */,
 			);
@@ -423,7 +523,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -468,7 +568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -479,6 +579,7 @@
 		};
 		6B8546C61DFA8FEE0017A948 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4099516B83167904EA97E2A8 /* Pods-Common-EHWidget.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -494,6 +595,7 @@
 		};
 		6B8546C71DFA8FEE0017A948 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAD8079F493F7380DD115AF4 /* Pods-Common-EHWidget.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -509,7 +611,7 @@
 		};
 		6B8546DB1DFA927E0017A948 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E69F99CB79DD94EA346A7A4A /* Pods-HBWidget.debug.xcconfig */;
+			baseConfigurationReference = FB04743747D3B187ACE9F1BA /* Pods-Common-HBWidget.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4W3JG447ZD;
@@ -525,7 +627,7 @@
 		};
 		6B8546DC1DFA927E0017A948 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BADEC4EECCAD249AF0D02F9 /* Pods-HBWidget.release.xcconfig */;
+			baseConfigurationReference = F15F883ACF924CE741DC57CD /* Pods-Common-HBWidget.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4W3JG447ZD;

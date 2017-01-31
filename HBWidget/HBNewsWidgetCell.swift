@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HBNewsWidgetCell: UITableViewCell {
 
@@ -32,11 +33,31 @@ class HBNewsWidgetCell: UITableViewCell {
         self.displayImageView?.clipsToBounds = true
         
         self.displayTitle?.text = post.title
-        self.displayInfo?.text = post.date.description
+        self.displayInfo?.text = "\(timeAgoSinceDate(post.date, numericDates: true))"
         
-//        self.displayTitle?.textColor = UIColor.lightText
-//        self.displayInfo?.textColor = UIColor.lightText
-        
+        if let url = URL(string: post.thumbnailURLString) {
+            var sdOptions:SDWebImageOptions = SDWebImageOptions.retryFailed
+            if url.path.hasSuffix(".gif") {
+                sdOptions = [SDWebImageOptions.retryFailed, SDWebImageOptions.lowPriority]
+            }
+            self.displayImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "default_placeholder"), options: sdOptions, completed: { (image, error, cacheType, url) -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
+                    //self.activityView.stopAnimating()
+                    if (cacheType == SDImageCacheType.memory) {
+                        self.displayImageView.alpha = 1
+                        return
+                    } else {
+                        // If the cache is none or disk, it's just been loaded
+                        self.displayImageView.alpha = 0.0
+                        UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.beginFromCurrentState, animations: { () -> Void in
+                            self.displayImageView.alpha = 1
+                        }, completion: { (finished) -> Void in
+                        })
+                    }
+                    
+                })
+            })
+        }
     }
     
 }
