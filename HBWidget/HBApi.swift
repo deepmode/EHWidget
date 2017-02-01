@@ -85,10 +85,11 @@ class HBApi: NSObject {
                         let postLink = eachJsonPost["_links"]
                         let linkURLString: String = postLink["self"]["href"].string ?? ""
                         let thumbnailURLString: String = postLink["thumbnail"]["href"].string ?? ""
+                        let category:String = postLink["categories"][0]["name"].string ?? ""
                         let postTime: String = eachJsonPost["date"].string ?? ""
                         let date: Date = Date(fromString: postTime, format: .iso8601)
                         
-                        let widgetPost = HBWidgetPost(postID: postID, title: title, subTitle: subTitle, linkURLString: linkURLString, thumbnailURLString:thumbnailURLString, date: date)
+                        let widgetPost = HBWidgetPost(postID: postID, title: title, subTitle: subTitle, linkURLString: linkURLString, thumbnailURLString:thumbnailURLString, category: category, date: date)
                         
                             
                         

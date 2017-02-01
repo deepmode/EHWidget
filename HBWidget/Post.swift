@@ -17,6 +17,7 @@ struct HBWidgetPost {
     var subTitle:String?
     var linkURLString: String
     var thumbnailURLString:String
+    var category:String
     var date: Date
     
 

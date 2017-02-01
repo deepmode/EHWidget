@@ -19,9 +19,15 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         }
     }
     
-    let maxShowInExpandMode = 4
-    let estimateTableViewCellHeight:CGFloat = 115
-    
+    var maxShowInExpandMode:Int {
+        if self.view.frame.width > 320 {
+            return 4
+        } else {
+            //4 inch screen -> only show 3 items in the widget
+            return 3
+        }
+    }
+    let estimateTableViewCellHeight:CGFloat = 112 - 1 //this value is depending on the high of the cell
     
     override func viewDidLoad() {
         print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
@@ -48,8 +54,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             // Fallback on earlier versions
         }
         
-        //self.view.backgroundColor = UIColor.green
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,6 +63,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     }
     
     
+    //MARK: Widget
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
         // Perform any setup necessary in order to update the view.
@@ -67,7 +72,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
-        HBApi.getNewsFeed("https://hypebeast.com") { (request, response, widgetPosts, st, error) in
+        HBApi.getNewsFeed("https://hypebeast.com/") { (request, response, widgetPosts, st, error) in
             DispatchQueue.main.async(execute: { () -> Void in
                 self.dataSrc = widgetPosts!
                 self.updatePreferredContentSize()
@@ -75,8 +80,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             })
         }
     }
-    
-    
     
     
     func updatePreferredContentSize() {
@@ -99,8 +102,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         }
         
         self.preferredContentSize = newSize
-        
-
     }
     
     // For iOS 10
@@ -119,6 +120,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         
         self.updatePreferredContentSize()
     }
+    
     
     //MARK: - UITableViewDelegate & UIDataSrcDelegate
     
@@ -142,14 +144,30 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             cell.selectionStyle =  UITableViewCellSelectionStyle.none //if set to default, iOS 9 - after selected, won't diselect
             cell.layoutMargins =  UIEdgeInsets.zero
             
-            //----- SUPER IMPORTANT -----
-            //Fix the left alignment issue for custom cell to sync with the default UITableCell's behaviour
-            //http://stackoverflow.com/questions/27420888/uitableviewcell-with-autolayout-left-margin-different-on-iphone-and-ipad
-            cell.preservesSuperviewLayoutMargins = true
-            cell.contentView.preservesSuperviewLayoutMargins = true
-            //---------------------------
+//            //----- SUPER IMPORTANT -----
+//            //Fix the left alignment issue for custom cell to sync with the default UITableCell's behaviour
+//            //http://stackoverflow.com/questions/27420888/uitableviewcell-with-autolayout-left-margin-different-on-iphone-and-ipad
+//            if #available(iOSApplicationExtension 10.0, *) {
+//                
+//            } else {
+//                cell.preservesSuperviewLayoutMargins = true
+//                cell.contentView.preservesSuperviewLayoutMargins = true
+//            }
+//            //---------------------------
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row < self.dataSrc.count {
+            let post = self.dataSrc[indexPath.row]
+            if let url = URL(string: post.linkURLString) {
+                self.extensionContext?.open(url, completionHandler: { (state) in
+                    
+                })
+            }
+            
+        }
     }
 }
 
