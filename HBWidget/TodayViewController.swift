@@ -11,6 +11,26 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDelegate, UITableViewDataSource {
     
+    //##################
+    enum AppConfigLanguageCode:String {
+        case EN = "en"
+        case CNT = "cnt" //HK
+        case CNS = "cns" //CN
+        case JA = "ja"
+        case TW = "tw" //TW
+        case KR = "kr" //KR
+    }
+    
+    let shareAppGroupName = "group.com.101medialab.EHWidget"
+    
+    private let kLanguageKey = "kLanguageCode"
+    
+    private var userDefault:UserDefaults? {
+        let d = UserDefaults.init(suiteName: self.shareAppGroupName)
+        return d
+    }
+    //##################
+    
     @IBOutlet weak var tableView:UITableView!
     
     private var dataSrc:[HBWidgetPost] = [HBWidgetPost]() {
@@ -62,6 +82,30 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: Get Widget link
+    
+    
+    var getCurrentLink:String {
+        let userDefault = self.userDefault
+        if let languageCodeValue =  userDefault?.object(forKey: self.kLanguageKey) as? String {
+            switch languageCodeValue {
+            case AppConfigLanguageCode.EN.rawValue:
+                return "https://hypebeast.com/"
+            case AppConfigLanguageCode.CNT.rawValue:
+                return "https://hypebeast.com/zh"
+            case AppConfigLanguageCode.CNS.rawValue:
+                return "https://hypebeast.cn"
+            case AppConfigLanguageCode.JA.rawValue:
+                return "https://hypebeast.com/jp"
+            case AppConfigLanguageCode.KR.rawValue:
+                return "https://hypebeast.com/kr"
+            default:
+                return "https://hypebeast.com/"
+            }
+        }
+        return "https://hypebeast.com/"
+    }
+    
     
     //MARK: Widget
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -72,7 +116,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
-        HBApi.getNewsFeed("https://hypebeast.com/") { (request, response, widgetPosts, st, error) in
+        HBApi.getNewsFeed(self.getCurrentLink) { (request, response, widgetPosts, st, error) in
             DispatchQueue.main.async(execute: { () -> Void in
                 self.dataSrc = widgetPosts!
                 self.updatePreferredContentSize()
@@ -161,9 +205,17 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row < self.dataSrc.count {
             let post = self.dataSrc[indexPath.row]
-            if let url = URL(string: post.linkURLString) {
+//            if let url = URL(string: post.linkURLString) {
+//                self.extensionContext?.open(url, completionHandler: { (state) in
+//                    
+//                })
+//            }
+            
+            //custom schema defined in HYPEBEAST App
+            
+            if let url = URL(string: "hypebeast://?link=\(post.linkURLString)") {
                 self.extensionContext?.open(url, completionHandler: { (state) in
-                    
+
                 })
             }
             

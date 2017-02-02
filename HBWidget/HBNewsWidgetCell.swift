@@ -95,6 +95,9 @@ class HBNewsWidgetCell: UITableViewCell {
         if let url = URL(string: post.thumbnailURLString) {
             var sdOptions:SDWebImageOptions = SDWebImageOptions.retryFailed
             if url.path.hasSuffix(".gif") {
+                self.displayImageView.image = UIImage(named: "default_placeholder")
+                self.displayImageView.alpha = 1
+                return
                 sdOptions = [SDWebImageOptions.retryFailed, SDWebImageOptions.lowPriority]
             }
             

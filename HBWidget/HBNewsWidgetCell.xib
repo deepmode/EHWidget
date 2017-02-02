@@ -40,7 +40,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6V-Re-YbH">
-                        <rect key="frame" x="0.0" y="47" width="232" height="12"/>
+                        <rect key="frame" x="0.0" y="49" width="232" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                 <constraints>
                     <constraint firstItem="fZi-eS-3Eu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="8Db-X8-hDX"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="y6V-Re-YbH" secondAttribute="bottom" priority="950" constant="8" id="AJN-8Z-IIs"/>
-                    <constraint firstItem="y6V-Re-YbH" firstAttribute="top" secondItem="ANg-gg-0rp" secondAttribute="bottom" constant="2" id="Kco-HD-Xxw"/>
+                    <constraint firstItem="y6V-Re-YbH" firstAttribute="top" secondItem="ANg-gg-0rp" secondAttribute="bottom" constant="4" id="Kco-HD-Xxw"/>
                     <constraint firstItem="ANg-gg-0rp" firstAttribute="top" secondItem="fZi-eS-3Eu" secondAttribute="bottom" constant="2" id="M0F-n2-Tas"/>
                     <constraint firstItem="ANg-gg-0rp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MYu-nh-wYj"/>
                     <constraint firstItem="8uu-K2-RRk" firstAttribute="leading" secondItem="y6V-Re-YbH" secondAttribute="trailing" constant="8" id="RDX-3F-eYl"/>

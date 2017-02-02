@@ -10,7 +10,33 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //##################
+    enum AppConfigLanguageCode:String {
+        case EN = "en"
+        case CNT = "cnt" //HK
+        case CNS = "cns" //CN
+        case JA = "ja"
+        case TW = "tw" //TW
+        case KR = "kr" //KR
+    }
+    
+    let shareAppGroupName = "group.com.101medialab.EHWidget"
+    
+    private let kLanguageKey = "kLanguageCode"
+    
+    private var userDefault:UserDefaults? {
+        let d = UserDefaults.init(suiteName: self.shareAppGroupName)
+        return d
+    }
+    //##################
+    
+    
+    
+    
+    @IBOutlet weak var segmentControl:UISegmentedControl!
+    
     @IBOutlet weak var tableView:UITableView!
+    
     private var dataSrc:[HBWidgetPost] = [HBWidgetPost]() {
         didSet {
             self.tableView.reloadData()
@@ -19,17 +45,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     static let maxSize = 20
     
-    //    func setupDataSrc() {
-    //        print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
-    //        var tempChannels = [HBChannel]()
-    //        for eachIndex in 0...TodayViewController.maxSize {
-    //            let hbc = HBChannel(channelIdentifier: "identifier \(eachIndex)", channelDisplayName: "Channel Display name Channel Display Name Channel Display name Channel Display Name Channel Display Name Channel Display Name \(eachIndex)", channelDescription: "\(eachIndex) : Channel Description. Plastic has become a vital part of our lives of convenience.", enableChannel: true, enableNotification: true)
-    //            tempChannels.append(hbc)
-    //        }
-    //        self.dataSrc = tempChannels
-    //    }
-    
     let estimateTableViewCellHeight:CGFloat = 120.0
+    
     override func viewDidLoad() {
         print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
         super.viewDidLoad()
@@ -49,11 +66,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //self.setupDataSrc()
         
         self.tableView.reloadData()
-        self.updatePreferredContentSize()
         
         self.fetchData()
         
         self.view.backgroundColor = UIColor.green
+        
+        self.updateUI()
         
     }
     
@@ -64,43 +82,105 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //MARK: - Data Fetching
     func fetchData() {
-        HBApi.getNewsFeed("https://hypebeast.com/") { (request, response, widgetPosts, st, error) in
+        HBApi.getNewsFeed(self.getCurrentLink) { (request, response, widgetPosts, st, error) in
 
             self.dataSrc = widgetPosts!
             self.tableView.reloadData()
         }
     }
     
+    //MARK: - IBAction
     
-//    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-//        print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
-//        // Perform any setup necessary in order to update the view.
-//        
-//        // If an error is encountered, use NCUpdateResult.Failed
-//        // If there's no update required, use NCUpdateResult.NoData
-//        // If there's an update, use NCUpdateResult.NewData
-//        
-//        HBApi.getNewsFeed("https://hypebeast.com/") { (request, response, widgetPosts, st, error) in
-//            
-//            self.dataSrc = widgetPosts!
-//            self.tableView.reloadData()
-//            self.updatePreferredContentSize()
-//            completionHandler(NCUpdateResult.newData)
-//        }
-//    }
+    @IBAction func languageChangeHandler(_ sender: UISegmentedControl) {
+
+        let userDefault = self.userDefault
+        var value = AppConfigLanguageCode.EN.rawValue
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            value = AppConfigLanguageCode.EN.rawValue
+        case 1:
+            value = AppConfigLanguageCode.CNT.rawValue
+        case 2:
+            value = AppConfigLanguageCode.CNS.rawValue
+        case 3:
+            value = AppConfigLanguageCode.JA.rawValue
+        case 4:
+            value = AppConfigLanguageCode.KR.rawValue
+        default:
+            value = AppConfigLanguageCode.EN.rawValue
+        }
+        userDefault?.set(value, forKey: self.kLanguageKey)
+        userDefault?.synchronize()
+        
+        self.fetchData()
+    }
     
+    var getCurrentLink:String {
+        let userDefault = self.userDefault
+        if let languageCodeValue =  userDefault?.object(forKey: self.kLanguageKey) as? String {
+            switch languageCodeValue {
+            case AppConfigLanguageCode.EN.rawValue:
+                return "https://hypebeast.com/"
+            case AppConfigLanguageCode.CNT.rawValue:
+                return "https://hypebeast.com/zh"
+            case AppConfigLanguageCode.CNS.rawValue:
+                return "https://hypebeast.cn"
+            case AppConfigLanguageCode.JA.rawValue:
+                return "https://hypebeast.com/jp"
+            case AppConfigLanguageCode.KR.rawValue:
+                return "https://hypebeast.com/kr"
+            default:
+                return "https://hypebeast.com/"
+            }
+        }
+        return "https://hypebeast.com/"
+    }
     
+    private func codeToIndex(code:AppConfigLanguageCode) -> Int {
+            switch code {
+            case AppConfigLanguageCode.EN:
+                return 0
+            case AppConfigLanguageCode.CNT:
+                return 1
+            case AppConfigLanguageCode.CNS:
+                return 2
+            case AppConfigLanguageCode.JA:
+                return 3
+            case AppConfigLanguageCode.KR:
+                return 4
+            default:
+                return 0
+            }
+    }
     
-    
-    func updatePreferredContentSize() {
-        print("----- \(NSStringFromClass(self.classForCoder)).\(#function) -----")
-        let rHeight:CGFloat = self.estimateTableViewCellHeight
-        var newSize = self.preferredContentSize
-        //newSize.height = CGFloat(self.tableView.numberOfRows(inSection: 0)) * rHeight //CGFloat(self.tableView.rowHeight)
-        //newSize.height = CGFloat(self.tableView.numberOfRows(inSection: 0)) * rHeight
-        newSize.height = CGFloat(3.0) * rHeight
-        self.preferredContentSize = newSize
+    private func updateUI() {
+        
+        //Update Segmenet Control based on last saved value
+        let userDefault = self.userDefault
+        var code = AppConfigLanguageCode.EN
+        
+        if let languageCodeValue =  userDefault?.object(forKey: self.kLanguageKey) as? String {
+            switch languageCodeValue {
+            case AppConfigLanguageCode.EN.rawValue:
+                code = AppConfigLanguageCode.EN
+            case AppConfigLanguageCode.CNT.rawValue:
+                code = AppConfigLanguageCode.CNT
+            case AppConfigLanguageCode.CNS.rawValue:
+                code = AppConfigLanguageCode.CNS
+            case AppConfigLanguageCode.JA.rawValue:
+                code = AppConfigLanguageCode.JA
+            case AppConfigLanguageCode.KR.rawValue:
+                code = AppConfigLanguageCode.KR
+            default:
+                code = AppConfigLanguageCode.EN
+            }
+        }
+        let selectedIndex = self.codeToIndex(code: code)
+        self.segmentControl.selectedSegmentIndex = selectedIndex
     }
     
     //MARK: - UITableViewDelegate & UIDataSrcDelegate
