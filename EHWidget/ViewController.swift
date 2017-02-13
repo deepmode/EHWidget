@@ -20,7 +20,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case KR = "kr" //KR
     }
     
+    var queryLanguageCode:String {
+        let userDefault = self.userDefault
+        if let languageCodeValue =  userDefault?.object(forKey: self.kLanguageKey) as? String {
+            switch languageCodeValue {
+            case AppConfigLanguageCode.EN.rawValue:
+                return "en"
+            case AppConfigLanguageCode.CNT.rawValue:
+                return "hk"
+            case AppConfigLanguageCode.CNS.rawValue:
+                return "cn"
+            case AppConfigLanguageCode.TW.rawValue:
+                return "hk"
+            case AppConfigLanguageCode.JA.rawValue:
+                return "jp"
+            case AppConfigLanguageCode.KR.rawValue:
+                return "kr"
+            default:
+                return "en"
+            }
+        }
+        return "en"
+    }
+    
     let shareAppGroupName = "group.com.101medialab.EHWidget"
+    
+    var widgetEndPoint:String {
+        let endPoint = "https://abc.com/app/mobile-app-widget?locale=\(self.queryLanguageCode)"
+        return endPoint
+    }
+
     
     private let kLanguageKey = "kLanguageCode"
     
@@ -120,6 +149,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     var getCurrentLink:String {
+        
+        return self.widgetEndPoint
+        
+        /*
         let userDefault = self.userDefault
         if let languageCodeValue =  userDefault?.object(forKey: self.kLanguageKey) as? String {
             switch languageCodeValue {
@@ -138,6 +171,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         return "https://hypebeast.com/"
+        */
     }
     
     private func codeToIndex(code:AppConfigLanguageCode) -> Int {

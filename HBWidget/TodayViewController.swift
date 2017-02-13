@@ -21,7 +21,35 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
         case KR = "kr" //KR
     }
     
+    var queryLanguageCode:String {
+        let userDefault = self.userDefault
+        if let languageCodeValue =  userDefault?.object(forKey: self.kLanguageKey) as? String {
+            switch languageCodeValue {
+            case AppConfigLanguageCode.EN.rawValue:
+                return "en"
+            case AppConfigLanguageCode.CNT.rawValue:
+                return "hk"
+            case AppConfigLanguageCode.CNS.rawValue:
+                return "cn"
+            case AppConfigLanguageCode.TW.rawValue:
+                return "hk"
+            case AppConfigLanguageCode.JA.rawValue:
+                return "jp"
+            case AppConfigLanguageCode.KR.rawValue:
+                return "kr"
+            default:
+                return "en"
+            }
+        }
+        return "en"
+    }
+    
     let shareAppGroupName = "group.com.101medialab.EHWidget"
+    
+    var widgetEndPoint:String {
+        let endPoint = "https://abc.com/app/mobile-app-widget?locale=\(self.queryLanguageCode)"
+        return endPoint
+    }
     
     private let kLanguageKey = "kLanguageCode"
     
@@ -86,6 +114,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     
     
     var getCurrentLink:String {
+        
+        return self.widgetEndPoint
+        
+        /*
         let userDefault = self.userDefault
         if let languageCodeValue =  userDefault?.object(forKey: self.kLanguageKey) as? String {
             switch languageCodeValue {
@@ -104,6 +136,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             }
         }
         return "https://hypebeast.com/"
+        */
     }
     
     
@@ -161,6 +194,18 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
 //            newSize.height = rHeight
 //        }
 //        self.preferredContentSize = newSize
+        
+        //iOS 10 only
+        if let context  = self.extensionContext {
+            //if #available(iOSApplicationExtension 10.0, *) {
+                let defaultLineSeparatorColor = UITableViewCell().backgroundColor
+                if context.widgetActiveDisplayMode == .expanded {
+                    tableView.separatorColor = tableView.backgroundColor
+                } else {
+                    tableView.separatorColor = defaultLineSeparatorColor
+                }
+            //}
+        }
         
         self.updatePreferredContentSize()
     }
