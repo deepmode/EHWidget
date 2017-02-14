@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let shareAppGroupName = "group.com.101medialab.EHWidget"
     
     var widgetEndPoint:String {
-        let endPoint = "https://abc.com/app/mobile-app-widget?locale=\(self.queryLanguageCode)"
+        let endPoint = "https://hypebeast.com/api/mobile-app-widget?locale=\(self.queryLanguageCode)"
         return endPoint
     }
 

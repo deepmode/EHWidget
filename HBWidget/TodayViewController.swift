@@ -47,7 +47,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     let shareAppGroupName = "group.com.101medialab.EHWidget"
     
     var widgetEndPoint:String {
-        let endPoint = "https://abc.com/app/mobile-app-widget?locale=\(self.queryLanguageCode)"
+        let endPoint = "https://hypebeast.com/api/mobile-app-widget?locale=\(self.queryLanguageCode)"
         return endPoint
     }
     
@@ -177,7 +177,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
                 newSize.height = CGFloat(self.maxShowInExpandMode) * rHeight
             }
         }
-        
         self.preferredContentSize = newSize
     }
     
@@ -186,28 +185,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
     @available(iOSApplicationExtension 10.0, *)
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
         
-//        var newSize = self.preferredContentSize
-//        let rHeight:CGFloat = self.estimateTableViewCellHeight
-//        if activeDisplayMode == .expanded {
-//            newSize.height = CGFloat(self.maxShowInExpandMode) * rHeight
-//        } else {
-//            newSize.height = rHeight
-//        }
-//        self.preferredContentSize = newSize
-        
-        //iOS 10 only
-        if let context  = self.extensionContext {
-            //if #available(iOSApplicationExtension 10.0, *) {
-                let defaultLineSeparatorColor = UITableViewCell().backgroundColor
-                if context.widgetActiveDisplayMode == .expanded {
-                    tableView.separatorColor = tableView.backgroundColor
-                } else {
-                    tableView.separatorColor = defaultLineSeparatorColor
-                }
-            //}
-        }
-        
+        self.tableView?.reloadData()
         self.updatePreferredContentSize()
+        
     }
     
     
@@ -232,6 +212,30 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             
             cell.selectionStyle =  UITableViewCellSelectionStyle.none //if set to default, iOS 9 - after selected, won't diselect
             cell.layoutMargins =  UIEdgeInsets.zero
+            
+            //default
+            cell.isHidden = false
+            tableView.separatorStyle = .singleLine
+            
+            if let context  = self.extensionContext {
+                if #available(iOSApplicationExtension 10.0, *) {
+                    
+                    if context.widgetActiveDisplayMode == .expanded {
+                        tableView.separatorStyle = .singleLine
+                    } else {
+                        
+                        tableView.separatorStyle = .none
+                        
+                        if indexPath.row >= 1 {
+                            cell.isHidden = true
+                            //return UITableViewCell()
+                        }
+                        
+                    }
+                }
+            }
+            
+
             
 //            //----- SUPER IMPORTANT -----
 //            //Fix the left alignment issue for custom cell to sync with the default UITableCell's behaviour
